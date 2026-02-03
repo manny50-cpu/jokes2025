@@ -4,45 +4,52 @@
 # make this performance task ready for submission
 # To give the user a fun experience hearing knock knock jokes
 
-jokes = [
-    ["Knock Knock, Calder, Calder police - I've been robbed!"],
-         ["Knock Knock, Tank, You're welcome!"],
-         ["Knock Knock, Broken pencil, Nevermind it's pointless!"]]
-def joke(lol):
-    if lol == "robbers":
-        input("Knock Knock")
-        input("Calder")
-        print("Calder police - I've been robbed!")
-    elif lol == "tanks":
-        input("Knock Knock")
-        input("Tank")
-        print("You are welcome!")
-    elif lol == "pencils":
-        input("Knock Knock")
-        input("Broken pencil")
-        print("Nevermind, it's pointless!")
-    else:
+joke_data = [
+    ["robbers", "Calder", "Calder police - I've been robbed!"],
+    ["tanks", "Tank", "You are welcome!"],
+    ["pencils", "Broken pencil", "Nevermind, it's pointless!"]
+]
+
+# Function 1: Handles the logic of finding and telling the joke
+# Uses Parameters and Selection (if/else)
+def tell_joke(user_choice):
+    found = False
+    
+    # Iteration: Loop through the list to find the matching joke
+    for item in joke_data:
+        if item[0] == user_choice:
+            input("Knock Knock")      # Sequencing: Step 1
+            input(item[1])            # Sequencing: Step 2
+            print(item[2])            # Sequencing: Step 3
+            found = True
+    
+    if not found:
         print("Sorry, I'm not funny enough for that.")
 
-def finished(lol2):
-    while lol2 == "yes":
-        question = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
-        joke(question)
-        lol2 = input("Do you want to hear another joke or are you finished? ")
-    if lol2 == "no":            rate = int(input("Please rate our game 1-10! "))
-    final_score = int(rate * 10)
-    print(str(final_score) + " percent satisfaction rate")
+# Function 2: Handles the ending survey and score calculation
+def run_survey():
+    rate = int(input("Please rate our game 1-10! "))
+    # Simple math for the satisfaction rate
+    final_score = rate * 10
+    print(str(final_score) + "% percent satisfaction rate")
+    
     friend = input("Would you recommend this game to a friend? ")
     if friend == "yes" or friend == "maybe":
-        print("Thanks, we appreciate it. ")
+        print("Thanks, we appreciate it.")
     else:
-        print("Sorry you did not enjoy it. ")
+        print("Sorry you did not enjoy it.")
 
-print("Thank you for playing the Knock Knock Joke Game!")
+# --- MAIN PROGRAM FLOW ---
+print("Welcome to the Knock Knock Joke Game!")
 
+playing = "yes"
+# Iteration: The game continues as long as the user wants to hear jokes
+while playing == "yes":
+    choice = input("Do you want to hear a joke about robbers, tanks, or pencils? ").lower()
+    tell_joke(choice)
+    
+    playing = input("Do you want to hear another joke? (yes/no) ").lower()
 
-
-question = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
-joke(question)
-question2 = input("Do you want to hear another joke or are you finished? ")
-finished(question2)
+# Call the second function after the loop ends
+run_survey()
+print("Thank you for playing!")
