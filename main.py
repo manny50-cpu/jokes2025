@@ -21,7 +21,7 @@ def tell_joke(user_choice):
             input("Knock Knock")      # Sequencing: Step 1
             input(item[1])            # Sequencing: Step 2
             print(item[2])            # Sequencing: Step 3
-            
+            return
     else:
         print("Sorry, I'm not funny enough for that.")
 
@@ -30,8 +30,11 @@ def run_survey():
     rate = int(input("Please rate our game 1-10! "))
     # Simple math for the satisfaction rate
     final_score = rate * 10
-    print(str(final_score) + "% percent satisfaction rate")
-    
+
+    user_score = []
+
+    user_score.append(final_score)
+    print(f"Your final score is {user_score[0]}%")
     friend = input("Would you recommend this game to a friend? ")
     if friend == "yes" or friend == "maybe":
         print("Thanks, we appreciate it.")
