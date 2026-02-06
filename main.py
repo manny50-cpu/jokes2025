@@ -13,7 +13,7 @@ joke_data = [
 # Function 1: Handles the logic of finding and telling the joke
 # Uses Parameters and Selection (if/else)
 def tell_joke(user_choice):
-    found = False
+
     
     # Iteration: Loop through the list to find the matching joke
     for item in joke_data:
@@ -21,9 +21,8 @@ def tell_joke(user_choice):
             input("Knock Knock")      # Sequencing: Step 1
             input(item[1])            # Sequencing: Step 2
             print(item[2])            # Sequencing: Step 3
-            found = True
-    
-    if not found:
+            
+    else:
         print("Sorry, I'm not funny enough for that.")
 
 # Function 2: Handles the ending survey and score calculation
